@@ -11,16 +11,11 @@ whether the results of a replication study are consistent with the original
 published study. One solution to this problem is to examine the effect size
 from the original study and generate the range of effect sizes that could
 reasonably be obtained (due to random sampling) in a replication attempt
-(i.e., calculate a prediction interval). If a replication effect size falls
-outside the prediction interval, then that effect likely did not occur
-due to the effects of sampling error alone. Alternatively, if a replication
-effect size falls within the prediction interval, then the replication
-effect could have reasonably occurred due to the effects of sampling error
-alone. This package has functions that calculate the prediction interval for
-the correlation (i.e., r), standardized mean difference (i.e., d-value), and mean.
-The calculations used in version 2.0.0 and onward differ from past calculations
-due to feedback during the journal review process. The new calculations allow
-for a more precise interpretation of the prediction interval.
+(i.e., calculate a prediction interval).This package has functions that
+calculate the prediction interval for the correlation (i.e., r),
+standardized mean difference (i.e., d-value), and mean.
+}
+\details{
 \tabular{ll}{
 Package: \tab replicationInterval\cr
 Type: \tab Package\cr
@@ -28,8 +23,7 @@ Version: \tab 1.0.0\cr
 Date: \tab 2016-08-19\cr
 License: \tab MIT License + file LICENSE\cr
 }
-}
-\details{
+
 \code{\link{pi.r}} creates a replication interval for a correlation (i.e., \emph{r} )\cr
 \code{\link{pi.d}} creates a replication interval for a standardized mean difference (i.e., \emph{d} )\cr
 \code{\link{pi.m}} creates a replication interval for a mean (i.e., \emph{M} )\cr
