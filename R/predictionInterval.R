@@ -4,7 +4,7 @@
 #' from the original study and generate the range of effect sizes that could
 #' reasonably be obtained (due to random sampling) in a replication attempt
 #' (i.e., calculate a prediction interval).This package has functions that
-#' calculate the prediction interval forcthe correlation (i.e., r),
+#' calculate the prediction interval for the correlation (i.e., r),
 #' standardized mean difference (i.e., d-value), and mean.
 #'
 #'\tabular{ll}{
