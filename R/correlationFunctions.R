@@ -136,7 +136,7 @@ print.replication_demo_r <- function(x,...) {
 
      percent_level <- round(x$prob_level*100)
      cat(sprintf("\n\n%d%% Prediction interval capture percentage: %2.1f%% (%d of %d trials)",percent_level,x$percent_in_pi,x$in_prediction_interval_count,num_trials))
-     cat(sprintf("\n%d%% Confidence interval capture percentage:  %2.1f%% (%d of %d trials)",percent_level,x$percent_in_ci,x$in_confidence_interval_count,num_trials))
+     cat(sprintf("\n%d%% Confidence interval capture percentage: %2.1f%% (%d of %d trials)",percent_level,x$percent_in_ci,x$in_confidence_interval_count,num_trials))
 
      table_out <- x$results_each_trial[1:5,]
      table_out$r <- round(table_out$r,2)
