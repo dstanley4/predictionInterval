@@ -73,7 +73,7 @@ print.d_prediction_interval <- function(x,...) {
 
      cat(sprintf("\nOriginal study: d = %1.2f, N1 = %d, N2 = %d, %d%% CI[%1.2f, %1.2f]",x$original_d,x$original_N1,x$original_N2,conf_per,x$lower_confidence_interval,x$upper_confidence_interval))
      cat(sprintf("\nReplication study: N1 = %d, N2 = %d",x$replication_N1,x$replication_N2))
-     cat(sprintf("\nPrediction interval: %d%% RI[%1.2f,%1.2f].\n\n",conf_per,x$lower_prediction_interval,x$upper_prediction_interval))
+     cat(sprintf("\nPrediction interval: %d%% PI[%1.2f,%1.2f].\n\n",conf_per,x$lower_prediction_interval,x$upper_prediction_interval))
      cat("\nInterpretation:\n")
      cat(x$method_text)
 
