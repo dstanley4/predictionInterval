@@ -2,7 +2,7 @@
 % Please edit documentation in R/dValueFunctions.R
 \name{pi.d}
 \alias{pi.d}
-\title{\emph{d}-value (i.e., standardized mean difference) Replication Interval}
+\title{\emph{d}-value (i.e., standardized mean difference) Prediction Interval}
 \usage{
 pi.d(d, n1, n2, rep.n1 = NA, rep.n2 = NA, prob.level = 0.95)
 }
@@ -20,10 +20,10 @@ pi.d(d, n1, n2, rep.n1 = NA, rep.n2 = NA, prob.level = 0.95)
 \item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
 }
 \value{
-A list of values (\code{lower.replication.interval.d, upper.replication.interval.d}) containing the replication interval (and related statistics if requested with the \code{extended.output} argument).
+A list of values (\code{lower.prediction.interval.d, upper.prediction.interval.d}) containing the prediction interval (and related statistics if requested with the \code{extended.output} argument).
 }
 \description{
-\emph{d}-value (i.e., standardized mean difference) Replication Interval
+\emph{d}-value (i.e., standardized mean difference) Prediction Interval
 }
 \examples{
 pi.d(d=.65,n1=50,n2=50,rep.n1=100,rep.n2=100)

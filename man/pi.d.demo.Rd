@@ -2,7 +2,7 @@
 % Please edit documentation in R/dValueFunctions.R
 \name{pi.d.demo}
 \alias{pi.d.demo}
-\title{Simulation to demonstrate the meaning of the d-value replication interval}
+\title{Simulation to demonstrate the meaning of the d-value prediction interval}
 \usage{
 pi.d.demo(n1 = 50, n2 = 50, rep.n1 = NA, rep.n2 = NA, pop.d = 0.5,
   number.trials = 10000, prob.level = 0.95, bias.correction = FALSE)
@@ -25,10 +25,10 @@ pi.d.demo(n1 = 50, n2 = 50, rep.n1 = NA, rep.n2 = NA, pop.d = 0.5,
 \item{bias.correction}{Apply bias correction formula to d-values.}
 }
 \value{
-The replication interval and related statistics in list format.
+The prediction interval and related statistics in list format.
 }
 \description{
-Simulation to demonstrate the meaning of the d-value replication interval
+Simulation to demonstrate the meaning of the d-value prediction interval
 }
 \examples{
 pi.d.demo(n1=50,n2=50,rep.n1=100,rep.n2=100,pop.d=.50,number.trials=10)

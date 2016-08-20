@@ -20,10 +20,10 @@ pi.m.demo(n = 10, rep.n = NA, mu = 0, sigma = 1,
 
 \item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
 
-\item{show.all.trials}{Show original correlation, replication interval, replication correlation, and whether replication effect is in the interval.}
+\item{show.all.trials}{Show original correlation, prediction interval, replication correlation, and whether replication effect is in the interval.}
 }
 \value{
-The replication interval and related statistics in list format.
+The prediction interval and related statistics in list format.
 }
 \description{
 Simulation to demonstrate the meaning of the prediction interval for the mean
