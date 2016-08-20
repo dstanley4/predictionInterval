@@ -168,7 +168,7 @@ get_orig_rep_r <- function(original_N,replication_N,rho,prob_level,bias_correcti
      original_sample <- MASS::mvrnorm(n=original_N,mu=rep(0,2),Sigma=sigma,empirical=FALSE)
      original_r <- get_cor(original_sample,bias_correction=bias_correction)
 
-     #confidence and replication interval
+     #confidence and prediction interval
      prediction_interval_metrics <- pi.r(r=original_r,n=original_N,rep.n=replication_N,prob.level=prob_level)
      confidence_interval  <- c(prediction_interval_metrics$lower_confidence_interval,prediction_interval_metrics$upper_confidence_interval)
      prediction_interval <- c(prediction_interval_metrics$lower_prediction_interval,prediction_interval_metrics$upper_prediction_interval)
