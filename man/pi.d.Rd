@@ -20,7 +20,7 @@ pi.d(d, n1, n2, rep.n1 = NA, rep.n2 = NA, prob.level = 0.95)
 \item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
 }
 \value{
-A list of values (\code{lower.prediction.interval.d, upper.prediction.interval.d}) containing the prediction interval (and related statistics if requested with the \code{extended.output} argument).
+The prediction interval and related statistics in list format.
 }
 \description{
 \emph{d}-value (i.e., standardized mean difference) Prediction Interval

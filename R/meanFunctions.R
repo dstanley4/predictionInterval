@@ -89,7 +89,7 @@ print.M_prediction_interval <- function(x,...) {
 #' @param number.trials Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.
 #' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
 #' @param show.all.trials Show original correlation, prediction interval, replication correlation, and whether replication effect is in the interval.
-#' @return The prediction interval and related statistics in list format.
+#' @return The prediction interval capture percentage and related statistics in list format.
 #' @examples
 #' pi.m.demo(n=150,mu=0,sigma=1,number.trials=10)
 #' @export

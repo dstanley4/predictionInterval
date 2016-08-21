@@ -8,7 +8,7 @@
 #' @param rep.n1 (optional) Replication study: Sample size for group 1. If not specified, n1 is used.
 #' @param rep.n2 (optional) Replication study: Sample size for group 2. If not specified, n2 is used.
 #' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
-#' @return A list of values (\code{lower.prediction.interval.d, upper.prediction.interval.d}) containing the prediction interval (and related statistics if requested with the \code{extended.output} argument).
+#' @return The prediction interval and related statistics in list format.
 #' @references
 #' Borenstein, M., Hedges, L. V., Higgins, J. P., & Rothstein, H. R. (2009). \emph{Introduction to meta-analysis}. John Wiley & Sons.\cr\cr
 #'Cumming, G., & Finch, S. (2001). A primer on the understanding, use, and calculation of confidence intervals that are based on central and noncentral distributions. \emph{Educational and Psychological Measurement, 61(4)}, 532-574.
@@ -97,7 +97,7 @@ print.d_prediction_interval <- function(x,...) {
 #' @param number.trials Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.
 #' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
 #' @param bias.correction Apply bias correction formula to d-values.
-#' @return The prediction interval and related statistics in list format.
+#' @return The prediction interval capture percentage and related statistics in list format.
 #' @examples
 #' pi.d.demo(n1=50,n2=50,rep.n1=100,rep.n2=100,pop.d=.50,number.trials=10)
 #' @export

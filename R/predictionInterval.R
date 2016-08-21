@@ -8,32 +8,32 @@
 #' standardized mean difference (i.e., d-value), and mean.
 #'
 #'\tabular{ll}{
-#'Package: \tab replicationInterval\cr
+#'Package: \tab predictionInterval\cr
 #'Type: \tab Package\cr
 #'Version: \tab 1.0.0\cr
 #'Date: \tab 2016-08-19\cr
 #'License: \tab MIT License + file LICENSE\cr
 #'}
 #'
-#'\code{\link{pi.r}} creates a replication interval for a correlation (i.e., \emph{r} )\cr
-#'\code{\link{pi.d}} creates a replication interval for a standardized mean difference (i.e., \emph{d} )\cr
-#'\code{\link{pi.m}} creates a replication interval for a mean (i.e., \emph{M} )\cr
+#'\code{\link{pi.r}} creates a prediction interval for a correlation (i.e., \emph{r} )\cr
+#'\code{\link{pi.d}} creates a prediction interval for a standardized mean difference (i.e., \emph{d} )\cr
+#'\code{\link{pi.m}} creates a prediction interval for a mean (i.e., \emph{M} )\cr
 #'
-#'\code{\link{pi.r.demo}} demonstrates RI capture percentage for a correlation (i.e., \emph{r} )\cr
-#'\code{\link{pi.d.demo}} demonstrates RI capture percentage for a standardized mean difference (i.e., \emph{d} )\cr
-#'\code{\link{pi.m.demo}} demonstrates RI capture percentage for a mean (i.e., \emph{M} )\cr
+#'\code{\link{pi.r.demo}} demonstrates PI capture percentage for a correlation (i.e., \emph{r} )\cr
+#'\code{\link{pi.d.demo}} demonstrates PI capture percentage for a standardized mean difference (i.e., \emph{d} )\cr
+#'\code{\link{pi.m.demo}} demonstrates PI capture percentage for a mean (i.e., \emph{M} )\cr
 #'
-#'@name replicationInterval-package
-#'@aliases replicationInterval
+#'@name predictionInterval-package
+#'@aliases predictionInterval
 #'@docType package
-#'@title Replication Interval Functions
+#'@title Prediction Interval Functions
 #'@author
 #'\tabular{ll}{
 #'Author: \tab David J. Stanley \email{dstanley@@uoguelph.ca}\cr
 #'Maintainer: \tab David J. Stanley \email{dstanley@@uoguelph.ca}
 #'}
 #'@references
-#'Spence, J.R. & Stanley, D.J.(in prep). Replication Interval: What to expect when you're expecting a replication. \cr\cr\cr
+#'Spence, J.R. & Stanley, D.J.(in prep). Prediction Interval: What to expect when you're expecting a replication. \cr\cr\cr
 #'Also: \cr\cr
 #'Cumming, G. & Maillardet, R. (2006). Confidence intervals and replication: where will the next mean fall? \emph{Psychological Methods, 11(3)}, 217-227. \cr\cr
 #'Estes, W.K. (1997). On the communication of information by displays of standard error and confidence intervals. \emph{Psychonomic Bulleting & Review, 4(3)}, 330-341. \cr\cr

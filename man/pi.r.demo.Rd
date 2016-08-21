@@ -21,7 +21,7 @@ pi.r.demo(n = 100, rep.n = NA, rho = 0.5, number.trials = 10000,
 \item{bias.correction}{Apply bias correction formula to d-values.}
 }
 \value{
-The prediction interval and related statistics in list format.
+The prediction interval capture percentage and related statistics in list format.
 }
 \description{
 Simulation to demonstrate the meaning of the correlation prediction interval

@@ -23,7 +23,7 @@ pi.m.demo(n = 10, rep.n = NA, mu = 0, sigma = 1,
 \item{show.all.trials}{Show original correlation, prediction interval, replication correlation, and whether replication effect is in the interval.}
 }
 \value{
-The prediction interval and related statistics in list format.
+The prediction interval capture percentage and related statistics in list format.
 }
 \description{
 Simulation to demonstrate the meaning of the prediction interval for the mean

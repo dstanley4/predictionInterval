@@ -25,7 +25,7 @@ pi.d.demo(n1 = 50, n2 = 50, rep.n1 = NA, rep.n2 = NA, pop.d = 0.5,
 \item{bias.correction}{Apply bias correction formula to d-values.}
 }
 \value{
-The prediction interval and related statistics in list format.
+The prediction interval capture percentage and related statistics in list format.
 }
 \description{
 Simulation to demonstrate the meaning of the d-value prediction interval

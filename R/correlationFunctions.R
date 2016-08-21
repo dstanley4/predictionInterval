@@ -79,7 +79,7 @@ print.r_prediction_interval <- function(x,...) {
 #' @param number.trials Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.
 #' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
 #' @param bias.correction Apply bias correction formula to d-values.
-#' @return The prediction interval and related statistics in list format.
+#' @return The prediction interval capture percentage and related statistics in list format.
 #' @examples
 #' pi.r.demo(n=100,rho=.50,number.trials=10)
 #' @export
