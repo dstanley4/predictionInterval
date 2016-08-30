@@ -5,6 +5,7 @@ Version: 1.0.0
 Date: 2016-08-19
 Author: David Stanley
 Maintainer: David Stanley <dstanley@uoguelph.ca>
+URL: https://github.com/dstanley4/predictionInterval
 Description: A common problem faced by journal reviewers and authors is the question of
      whether the results of a replication study are consistent with the original
      published study. One solution to this problem is to examine the effect size
