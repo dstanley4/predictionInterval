@@ -11,18 +11,13 @@
 #' @examples
 #' pi.m(M=2.53,SD=1.02,n=40,rep.n=80)
 #' @export
-pi.m <- function (M,SD=NA,VAR=NA,n,rep.n=NA,prob.level = .95) {
+pi.m <- function (M,SD=NA,VAR=SD*SD,n,rep.n=n,prob.level = .95) {
      original_M <- M
      original_N <- n
      prob_level <- prob.level
-     if (is.na(rep.n)) {rep.n<-original_N}
      replication_N <- rep.n
 
-     if (is.na(VAR)) {
-          original_VAR <- SD*SD
-     } else {
-          original_VAR <- VAR
-     }
+     original_VAR <- VAR
 
 
      #Confidence Interval for Mean
@@ -39,23 +34,23 @@ pi.m <- function (M,SD=NA,VAR=NA,n,rep.n=NA,prob.level = .95) {
      ri_LL <- original_M - qt(one_tail_prob,replication_df) * difference_SE
      ri_UL <- original_M + qt(one_tail_prob,replication_df) * difference_SE
 
-     prediction_interval_metrics <- list()
-     prediction_interval_metrics$original_M <- original_M
-     prediction_interval_metrics$original_VAR <- original_VAR
-     prediction_interval_metrics$original_SD <- sqrt(original_VAR)
-     prediction_interval_metrics$original_N <- original_N
-     prediction_interval_metrics$replication_N <- replication_N
-     prediction_interval_metrics$lower_prediction_interval <- ri_LL
-     prediction_interval_metrics$upper_prediction_interval <- ri_UL
-     prediction_interval_metrics$lower_confidence_interval <- ci_LL
-     prediction_interval_metrics$upper_confidence_interval <- ci_UL
-     prediction_interval_metrics$prob_level <- prob_level
-
      percent_level <- as.integer(round(prob_level*100))
      method_text <- get_method_text(original_M,ri_LL,ri_UL,replication_N,percent_level,"mean")
-     prediction_interval_metrics$method_text <- method_text$txt_combined
-     prediction_interval_metrics$ri_text <- method_text$txt_ri
 
+     prediction_interval_metrics <- list(
+          original_M = original_M,
+          original_VAR = original_VAR,
+          original_SD = sqrt(original_VAR),
+          original_N = original_N,
+          replication_N = replication_N,
+          lower_prediction_interval = ri_LL,
+          upper_prediction_interval = ri_UL,
+          lower_confidence_interval = ci_LL,
+          upper_confidence_interval = ci_UL,
+          prob_level = prob_level,
+          method_text = method_text$txt_combined,
+          ri_text = method_text$txt_ri
+     )
      class(prediction_interval_metrics) <- "M_prediction_interval"
 
      return(prediction_interval_metrics)
@@ -122,18 +117,18 @@ pi.m.demo <- function(n=10,rep.n=NA,mu=0,sigma=1,number.trials=10000,prob.level=
      in_confidence_interval_count <- sum(rep.M.in.ci)
      percent_in_ri <- (in_prediction_interval_count/(number_trials))*100
      percent_in_ci <- (in_confidence_interval_count/(number_trials))*100
-     replication_demo_output <- list()
-     replication_demo_output$percent_in_ri <- percent_in_ri
-     replication_demo_output$percent_in_ci <- percent_in_ci
-     replication_demo_output$in_prediction_interval_count <- in_prediction_interval_count
-     replication_demo_output$in_confidence_interval_count <- in_confidence_interval_count
-     replication_demo_output$results_each_trial <- output_df
-     replication_demo_output$mu <- mu
-     replication_demo_output$sigma <- sigma
-     replication_demo_output$original_N <- original_N
-     replication_demo_output$replication_N <- replication_N
-     replication_demo_output$prob_level <- prob_level
-
+     replication_demo_output <- list(
+          percent_in_ri = percent_in_ri,
+          percent_in_ci = percent_in_ci,
+          in_prediction_interval_count = in_prediction_interval_count,
+          in_confidence_interval_count = in_confidence_interval_count,
+          results_each_trial = output_df,
+          mu = mu,
+          sigma = sigma,
+          original_N = original_N,
+          replication_N = replication_N,
+          prob_level = prob_level
+     )
      class(replication_demo_output) <- "replication_demo_M"
 
      return(replication_demo_output)
