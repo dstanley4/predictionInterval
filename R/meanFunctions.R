@@ -6,16 +6,18 @@
 #' @param VAR Original study: Variance. Provide this or standard deviation - not both.
 #' @param n Original study: Sample size
 #' @param rep.n (optional) Replication study: Sample size. If not specified, n is used.
-#' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
+#' @param prob.level (optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.
 #' @return The prediction interval and related statistics in list format.
 #' @examples
 #' pi.m(M=2.53,SD=1.02,n=40,rep.n=80)
 #' @export
 pi.m <- function (M,SD=NA,VAR=NA,n,rep.n=NA,prob.level = .95) {
+     check_prob_level(prob.level)
      original_M <- M
      original_N <- n
      prob_level <- prob.level
      if (is.na(rep.n)) {rep.n<-original_N}
+     check_sample_sizes(n, rep.n)
      replication_N <- rep.n
 
      if (is.na(VAR)) {
@@ -63,12 +65,13 @@ pi.m <- function (M,SD=NA,VAR=NA,n,rep.n=NA,prob.level = .95) {
 
 #' @export
 print.M_prediction_interval <- function(x,...) {
-     conf_per <- x$prob_level * 100
+     conf_per <- as.integer(round(x$prob_level * 100))
      cat(sprintf("\nOriginal study: M = %1.2f, SD = %1.2f, N = %d, %d%% CI[%1.2f, %1.2f]",x$original_M,x$original_SD,x$original_N,conf_per,x$lower_confidence_interval,x$upper_confidence_interval))
      cat(sprintf("\nReplication study: N = %d",x$replication_N))
-     cat(sprintf("\nPrediction interval: %d%% PI[%1.2f,%1.2f].\n\n",conf_per,x$lower_prediction_interval,x$upper_prediction_interval))
+     cat(sprintf("\nPrediction interval: %d%% PI[%1.2f, %1.2f]\n",conf_per,x$lower_prediction_interval,x$upper_prediction_interval))
      cat("\nInterpretation:\n")
      cat(x$method_text)
+     cat("\n")
 
 }
 
@@ -84,20 +87,22 @@ print.M_prediction_interval <- function(x,...) {
 #' Simulation to demonstrate the meaning of the prediction interval for the mean
 #' @param n Original study: Sample size
 #' @param rep.n (optional) Replication study: Sample size. If not specified, n is used.
-#' @param mu All samples are drawn from a common population. This specifies the population correlation.
+#' @param mu All samples are drawn from a common population. This specifies the population mean.
 #' @param sigma All samples are drawn from a common population. This specifies the population standard deviation.
 #' @param number.trials Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.
-#' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
-#' @param show.all.trials Show original correlation, prediction interval, replication correlation, and whether replication effect is in the interval.
+#' @param prob.level (optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.
+#' @param show.all.trials Not currently used.
 #' @return The prediction interval capture percentage and related statistics in list format.
 #' @examples
 #' pi.m.demo(n=150,mu=0,sigma=1,number.trials=10)
 #' @export
 pi.m.demo <- function(n=10,rep.n=NA,mu=0,sigma=1,number.trials=10000,prob.level=.95,show.all.trials=FALSE) {
+     check_prob_level(prob.level)
      number_trials <- number.trials
      original_N <- n
      prob_level <- prob.level
      if (missing(rep.n)) {rep.n <- n}
+     check_sample_sizes(n, rep.n)
      replication_N <- rep.n
 
      output <-pbapply::pbreplicate(number_trials,get_orig_rep_m(original_N=original_N,replication_N=replication_N,mu=mu,sigma=sigma,prob_level=prob_level))
@@ -156,16 +161,16 @@ print.replication_demo_M <- function(x,...) {
      table_out$M <- round(table_out$M,2)
      table_out$SD <- round(table_out$SD,2)
      table_out$ci.LL <- round(table_out$ci.LL,2)
-     table_out$ci.UL <- round(table_out$ci.LL,2)
+     table_out$ci.UL <- round(table_out$ci.UL,2)
      table_out$pi.LL <- round(table_out$pi.LL,2)
      table_out$pi.UL <- round(table_out$pi.UL,2)
      table_out$rep.M <- round(table_out$rep.M,2)
      print(table_out,row.names=FALSE)
      cat("\n")
 
-     cat("\nNote: n = original sample size, M = original mean, SD = original standard deviation,")
+     cat("Note: n = original sample size, M = original mean, SD = original standard deviation,")
      cat("\nci.LL = lower-limit confidence interval, ci.UL = upper-limit confidence interval, rep.n = replication sample size,")
-     cat("\npi.LL = lower-limit prediction interval, pi.UL = upper-limit prediction interval, rep.M = replication mean\n")
+     cat("\npi.LL = lower-limit prediction interval, pi.UL = upper-limit prediction interval, rep.M = replication mean.\n")
 }
 
 

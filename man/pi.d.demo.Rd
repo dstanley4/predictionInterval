@@ -4,23 +4,31 @@
 \alias{pi.d.demo}
 \title{Simulation to demonstrate the meaning of the d-value prediction interval}
 \usage{
-pi.d.demo(n1 = 50, n2 = 50, rep.n1 = NA, rep.n2 = NA, pop.d = 0.5,
-  number.trials = 10000, prob.level = 0.95, bias.correction = FALSE)
+pi.d.demo(
+  n1 = 50,
+  n2 = 50,
+  rep.n1 = NA,
+  rep.n2 = NA,
+  pop.d = 0.5,
+  number.trials = 10000,
+  prob.level = 0.95,
+  bias.correction = FALSE
+)
 }
 \arguments{
 \item{n1}{Original study: Cell size 1}
 
 \item{n2}{Original study: Cell size 2}
 
-\item{rep.n1}{(optional) Replication study: Cell size 1. If not specified, n is used.}
+\item{rep.n1}{(optional) Replication study: Cell size 1. If not specified, n1 is used.}
 
-\item{rep.n2}{(optional) Replication study: Cell size 2. If not specified, n is used.}
+\item{rep.n2}{(optional) Replication study: Cell size 2. If not specified, n2 is used.}
 
-\item{pop.d}{All samples are drawn from a common population. This specifies the population correlation.}
+\item{pop.d}{All samples are drawn from a common population. This specifies the population d-value.}
 
 \item{number.trials}{Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.}
 
-\item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
+\item{prob.level}{(optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.}
 
 \item{bias.correction}{Apply bias correction formula to d-values.}
 }
@@ -33,4 +41,3 @@ Simulation to demonstrate the meaning of the d-value prediction interval
 \examples{
 pi.d.demo(n1=50,n2=50,rep.n1=100,rep.n2=100,pop.d=.50,number.trials=10)
 }
-

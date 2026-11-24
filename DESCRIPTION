@@ -1,7 +1,10 @@
 Package: predictionInterval
-Version: 1.0.0
 Type: Package
-Title: Prediction Interval Functions for Assessing Replication Study Results
+Title: Prediction Interval Functions for Assessing Replication Study
+        Results
+Version: 1.0.1
+Date: 2026-11-24
+Authors@R: person("David", "Stanley", , "dstanley@uoguelph.ca", role = c("aut", "cre"))
 Description: A common problem faced by journal reviewers and authors is the question of
      whether the results of a replication study are consistent with the original
      published study. One solution to this problem is to examine the effect size
@@ -9,16 +12,11 @@ Description: A common problem faced by journal reviewers and authors is the ques
      reasonably be obtained (due to random sampling) in a replication attempt
      (i.e., calculate a prediction interval). This package has functions that calculate
      the prediction interval for the correlation (i.e., r),
-     standardized mean difference (i.e., d-value), and mean.
-Author: David Stanley
-Maintainer: David Stanley <dstanley@uoguelph.ca>
+     standardized mean difference (i.e., d-value), and mean. The approach is described
+     in Spence and Stanley (2016) <doi:10.1371/journal.pone.0162874>.
 URL: https://github.com/dstanley4/predictionInterval
-Imports:
-    ggplot2,
-    MBESS,
-    MASS,
-    stats,
-    pbapply
+Imports: MASS, stats, pbapply
+Suggests: testthat
 License: MIT License + file LICENSE
-RoxygenNote: 5.0.1
-Date: 2016-08-19
+Encoding: UTF-8
+Config/roxygen2/version: 8.1.0

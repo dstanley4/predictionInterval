@@ -4,8 +4,14 @@
 \alias{pi.r.demo}
 \title{Simulation to demonstrate the meaning of the correlation prediction interval}
 \usage{
-pi.r.demo(n = 100, rep.n = NA, rho = 0.5, number.trials = 10000,
-  prob.level = 0.95, bias.correction = FALSE)
+pi.r.demo(
+  n = 100,
+  rep.n = NA,
+  rho = 0.5,
+  number.trials = 10000,
+  prob.level = 0.95,
+  bias.correction = FALSE
+)
 }
 \arguments{
 \item{n}{Original study: Sample size}
@@ -16,9 +22,9 @@ pi.r.demo(n = 100, rep.n = NA, rho = 0.5, number.trials = 10000,
 
 \item{number.trials}{Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.}
 
-\item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
+\item{prob.level}{(optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.}
 
-\item{bias.correction}{Apply bias correction formula to d-values.}
+\item{bias.correction}{Apply bias correction formula to correlations.}
 }
 \value{
 The prediction interval capture percentage and related statistics in list format.
@@ -29,4 +35,3 @@ Simulation to demonstrate the meaning of the correlation prediction interval
 \examples{
 pi.r.demo(n=100,rho=.50,number.trials=10)
 }
-

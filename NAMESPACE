@@ -12,10 +12,10 @@ export(pi.m)
 export(pi.m.demo)
 export(pi.r)
 export(pi.r.demo)
-import("ggplot2")
 importFrom("MASS","mvrnorm")
-importFrom("MBESS","ci.smd")
-importFrom("stats","cor")
-importFrom("stats","qt")
-importFrom("stats","rnorm")
-importFrom("stats","var")
+importFrom("stats",
+  "cor",
+  "qt",
+  "rnorm",
+  "var"
+)

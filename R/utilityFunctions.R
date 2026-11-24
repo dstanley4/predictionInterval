@@ -1,3 +1,27 @@
+# prob.level must be a value with at most two decimals from .01 to .99.
+# Noncentral t limits cannot be calculated accurately for levels extremely
+# close to 1, and levels with more decimals are not needed in practice.
+check_prob_level <- function(prob_level) {
+     is_valid <- is.numeric(prob_level) && length(prob_level) == 1 && is.finite(prob_level)
+     if (is_valid) {
+          percent <- prob_level * 100
+          is_valid <- abs(percent - round(percent)) < 1e-8 && round(percent) >= 1 && round(percent) <= 99
+     }
+     if (!is_valid) {
+          stop("prob.level must be a value with at most two decimals from .01 to .99 (for example .90 or .95).", call. = FALSE)
+     }
+}
+
+
+# Sample sizes must be whole numbers
+check_sample_sizes <- function(...) {
+     sizes <- c(...)
+     if (!is.numeric(sizes) || any(!is.finite(sizes)) || any(abs(sizes - round(sizes)) > 1e-8)) {
+          stop("Sample sizes must be whole numbers.", call. = FALSE)
+     }
+}
+
+
 # Using Modified Asymetrical Method (MAS) 
 # Zou (2007), Equation 15
 mas_interval <- function (original_r,l1,u1,l2,u2) {
@@ -117,10 +141,10 @@ get_d_value <- function(group1.data,group2.data, bias_correction) {
 }
 
 get_method_text <- function(orig_stat,LL,UL,replication_N,percent_level,stat_string) {
-     method_text0 <- sprintf("The original %s is %1.2f -",stat_string,orig_stat)
-     method_text1 <- sprintf("with a prediction interval %d%% PI[%1.2f, %1.2f] based a replication sample size of N = %d.",percent_level,LL,UL,replication_N)
+     method_text0 <- sprintf("The original %s is %1.2f,",stat_string,orig_stat)
+     method_text1 <- sprintf("with a prediction interval of %d%% PI[%1.2f, %1.2f] based on a replication sample size of N = %d.",percent_level,LL,UL,replication_N)
      method_text2 <- sprintf("If the replication %s differs from the original %s only due to sampling error, there is a %d%% chance the replication result will fall in this interval.",stat_string,stat_string,percent_level)
-     method_text3 <- sprintf("If the replication %s falls outside of this range, factors beyond sampling error are likely also responsible for the difference.",stat_string)
+     method_text3 <- sprintf("If the replication %s falls outside of this interval, factors beyond sampling error are likely also responsible for the difference.",stat_string)
      
      output <- list()
      output$txt0 <- method_text0
@@ -141,7 +165,7 @@ combine_method_text <- function(x) {
 
 get_method_text_d <- function(orig_stat,LL,UL,replication_N1,replication_N2,percent_level,stat_string) {
      output <- get_method_text(orig_stat,LL,UL,replication_N1,percent_level,stat_string) 
-     output$txt1 <-  method_text1 <- sprintf("with a replication interval %d%% RI[%1.2f, %1.2f] based a replication cell sizes N1 = %d and N2 = %d.",percent_level,LL,UL,replication_N1,replication_N2)
+     output$txt1 <-  method_text1 <- sprintf("with a prediction interval of %d%% PI[%1.2f, %1.2f] based on replication cell sizes of N1 = %d and N2 = %d.",percent_level,LL,UL,replication_N1,replication_N2)
      output$txt_combined <- combine_method_text(output)
      return(output)
 }

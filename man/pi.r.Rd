@@ -13,7 +13,7 @@ pi.r(r, n, rep.n = NA, prob.level = 0.95)
 
 \item{rep.n}{(optional) Replication study: Sample size. If not specified, n is used.}
 
-\item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
+\item{prob.level}{(optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.}
 }
 \value{
 The prediction interval and related statistics in list format.
@@ -24,4 +24,3 @@ Correlation prediction interval
 \examples{
 pi.r(r=.35,n=100,rep.n=200)
 }
-

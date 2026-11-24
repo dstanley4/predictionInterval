@@ -17,7 +17,7 @@ pi.d(d, n1, n2, rep.n1 = NA, rep.n2 = NA, prob.level = 0.95)
 
 \item{rep.n2}{(optional) Replication study: Sample size for group 2. If not specified, n2 is used.}
 
-\item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
+\item{prob.level}{(optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.}
 }
 \value{
 The prediction interval and related statistics in list format.
@@ -32,4 +32,3 @@ pi.d(d=.65,n1=50,n2=50,rep.n1=100,rep.n2=100)
 Borenstein, M., Hedges, L. V., Higgins, J. P., & Rothstein, H. R. (2009). \emph{Introduction to meta-analysis}. John Wiley & Sons.\cr\cr
 Cumming, G., & Finch, S. (2001). A primer on the understanding, use, and calculation of confidence intervals that are based on central and noncentral distributions. \emph{Educational and Psychological Measurement, 61(4)}, 532-574.
 }
-

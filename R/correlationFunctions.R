@@ -5,16 +5,18 @@
 #' @param r Original study: Correlation
 #' @param n Original study: Sample size
 #' @param rep.n (optional) Replication study: Sample size. If not specified, n is used.
-#' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
+#' @param prob.level (optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.
 #' @return The prediction interval and related statistics in list format.
 #' @examples
 #' pi.r(r=.35,n=100,rep.n=200)
 #' @export
 pi.r <- function (r,n,rep.n=NA,prob.level = .95) {
+     check_prob_level(prob.level)
      original_r <- r
      original_N <- n
      prob_level <- prob.level
      if (is.na(rep.n)) {rep.n<-original_N}
+     check_sample_sizes(n, rep.n)
      replication_N <- rep.n
 
      original_CI <- ci_r(original_r, original_N,conf.level = prob_level)
@@ -56,13 +58,14 @@ pi.r <- function (r,n,rep.n=NA,prob.level = .95) {
 
 #' @export
 print.r_prediction_interval <- function(x,...) {
-     conf_per <- x$prob_level * 100
+     conf_per <- as.integer(round(x$prob_level * 100))
 
      cat(sprintf("\nOriginal study: r = %1.2f, N = %d, %d%% CI[%1.2f, %1.2f]",x$original_r,x$original_N,conf_per,x$lower_confidence_interval,x$upper_confidence_interval))
      cat(sprintf("\nReplication study: N = %d",x$replication_N))
-     cat(sprintf("\nPrediction interval: %d%% PI[%1.2f,%1.2f].\n\n",conf_per,x$lower_prediction_interval,x$upper_prediction_interval))
+     cat(sprintf("\nPrediction interval: %d%% PI[%1.2f, %1.2f]\n",conf_per,x$lower_prediction_interval,x$upper_prediction_interval))
      cat("\nInterpretation:\n")
      cat(x$method_text)
+     cat("\n")
 
 }
 
@@ -77,18 +80,20 @@ print.r_prediction_interval <- function(x,...) {
 #' @param rep.n (optional) Replication study: Sample size. If not specified, n is used.
 #' @param rho All samples are drawn from a common population. This specifies the population correlation.
 #' @param number.trials Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.
-#' @param prob.level (optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.
-#' @param bias.correction Apply bias correction formula to d-values.
+#' @param prob.level (optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.
+#' @param bias.correction Apply bias correction formula to correlations.
 #' @return The prediction interval capture percentage and related statistics in list format.
 #' @examples
 #' pi.r.demo(n=100,rho=.50,number.trials=10)
 #' @export
 pi.r.demo <- function(n=100,rep.n=NA,rho=.50,number.trials=10000,prob.level=.95, bias.correction=FALSE) {
+     check_prob_level(prob.level)
      bias_correction <- bias.correction
      number_trials <- number.trials
      original_N <- n
      prob_level <- prob.level
      if (missing(rep.n)) {rep.n <- n}
+     check_sample_sizes(n, rep.n)
      replication_N <- rep.n
 
      output <-pbapply::pbreplicate(number_trials,get_orig_rep_r(original_N=original_N,replication_N=replication_N,rho=rho,prob_level=prob_level,bias_correction=bias_correction))
@@ -141,7 +146,7 @@ print.replication_demo_r <- function(x,...) {
      table_out <- x$results_each_trial[1:5,]
      table_out$r <- round(table_out$r,2)
      table_out$ci.LL <- round(table_out$ci.LL,2)
-     table_out$ci.UL <- round(table_out$ci.LL,2)
+     table_out$ci.UL <- round(table_out$ci.UL,2)
      table_out$pi.LL <- round(table_out$pi.LL,2)
      table_out$pi.UL <- round(table_out$pi.UL,2)
      table_out$rep.r <- round(table_out$rep.r,2)
@@ -152,7 +157,7 @@ print.replication_demo_r <- function(x,...) {
 
      cat("Note: n = original sample size, r = original correlation,")
      cat("\nci.LL = lower-limit confidence interval, ci.UL = upper-limit confidence interval, rep.n = replication sample size,")
-     cat("\npi.UL = lower-limit prediction interval, pi.UL = upper-limit prediction interval,")
+     cat("\npi.LL = lower-limit prediction interval, pi.UL = upper-limit prediction interval,")
      cat("\nrep.r = replication correlation.\n")
 }
 

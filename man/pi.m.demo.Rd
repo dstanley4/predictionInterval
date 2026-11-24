@@ -4,23 +4,30 @@
 \alias{pi.m.demo}
 \title{Simulation to demonstrate the meaning of the prediction interval for the mean}
 \usage{
-pi.m.demo(n = 10, rep.n = NA, mu = 0, sigma = 1,
-  number.trials = 10000, prob.level = 0.95, show.all.trials = FALSE)
+pi.m.demo(
+  n = 10,
+  rep.n = NA,
+  mu = 0,
+  sigma = 1,
+  number.trials = 10000,
+  prob.level = 0.95,
+  show.all.trials = FALSE
+)
 }
 \arguments{
 \item{n}{Original study: Sample size}
 
 \item{rep.n}{(optional) Replication study: Sample size. If not specified, n is used.}
 
-\item{mu}{All samples are drawn from a common population. This specifies the population correlation.}
+\item{mu}{All samples are drawn from a common population. This specifies the population mean.}
 
 \item{sigma}{All samples are drawn from a common population. This specifies the population standard deviation.}
 
 \item{number.trials}{Indicate the number of pairs of sample (original, replication) that should be used. 10,000 or higher suggested for stable results.}
 
-\item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
+\item{prob.level}{(optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.}
 
-\item{show.all.trials}{Show original correlation, prediction interval, replication correlation, and whether replication effect is in the interval.}
+\item{show.all.trials}{Not currently used.}
 }
 \value{
 The prediction interval capture percentage and related statistics in list format.
@@ -31,4 +38,3 @@ Simulation to demonstrate the meaning of the prediction interval for the mean
 \examples{
 pi.m.demo(n=150,mu=0,sigma=1,number.trials=10)
 }
-

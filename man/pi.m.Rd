@@ -17,7 +17,7 @@ pi.m(M, SD = NA, VAR = NA, n, rep.n = NA, prob.level = 0.95)
 
 \item{rep.n}{(optional) Replication study: Sample size. If not specified, n is used.}
 
-\item{prob.level}{(optional 0 to 1 value) Probability level desired (0 to 1). If not specified .95 (i.e., 95 percent) will be used.}
+\item{prob.level}{(optional) Probability level desired, as a value with at most two decimals from .01 to .99 (for example .90 or .95). If not specified .95 (i.e., 95 percent) will be used.}
 }
 \value{
 The prediction interval and related statistics in list format.
@@ -28,4 +28,3 @@ Prediction interval for the mean
 \examples{
 pi.m(M=2.53,SD=1.02,n=40,rep.n=80)
 }
-
